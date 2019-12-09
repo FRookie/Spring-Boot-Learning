@@ -39,3 +39,7 @@ ___Spring-Boot___ 项目构建是 <kbd>pom</kbd>文件中会继承父节点<kbd>
         <generateGitPropertiesFile>true</generateGitPropertiesFile>
         <generateGitPropertiesFilename>${project.build.outputDirectory}/git.properties</generateGitPropertiesFilename>
       </configuration>
+# 注解解析
+___@RestController___:这是SpringMVC中的注解，是<kbd>@Responsebody</kbd>和<kbd>@Controller</kbd>的结合。注明这是一个<kbd>Controller</kbd>类
+用于<kbd>URL</kbd>请求所访问和映射的类，是一个支持<kbd>REST</kbd>的注解，且指明返回体为字符串类型。
+___@ResquestMapping___:此注解指明路由信息，任何请求都会根据路由地址映射到对应的方法上。
