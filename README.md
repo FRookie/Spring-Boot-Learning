@@ -30,8 +30,7 @@ ___Spring-Boot___ 项目构建是 <kbd>pom</kbd>文件中会继承父节点<kbd>
               <include>**/application*.yaml</include>
               <include>**/application*.properties</include>
             </includes>
-          </resource>
-      
+          </resource>    
 ### 日期格式初始化：
       <configuration>
         <verbose>true</verbose>
@@ -39,7 +38,12 @@ ___Spring-Boot___ 项目构建是 <kbd>pom</kbd>文件中会继承父节点<kbd>
         <generateGitPropertiesFile>true</generateGitPropertiesFile>
         <generateGitPropertiesFilename>${project.build.outputDirectory}/git.properties</generateGitPropertiesFilename>
       </configuration>
+### 字符编码：
+        UTF-8
+...<br/> 
+
 # 注解解析
 ___@RestController___:这是SpringMVC中的注解，是<kbd>@Responsebody</kbd>和<kbd>@Controller</kbd>的结合。注明这是一个<kbd>Controller</kbd>类
 用于<kbd>URL</kbd>请求所访问和映射的类，是一个支持<kbd>REST</kbd>的注解，且指明返回体为字符串类型。<br/>
-___@ResquestMapping___:此注解指明路由信息，任何请求都会根据路由地址映射到对应的方法上。
+___@ResquestMapping___:此注解指明路由信息，任何请求都会根据路由地址映射到对应的方法上。<br/>
+___@EnableAutoConfiguration___:这个注解告诉<kbd>Spring Boot</kbd>根据添加的<kbd>jar</kbd>依赖猜测你想如何配置<kbd>Spring</kbd>。由于 <kbd>spring-boot-starter-web</kbd> 添加了<kbd>Tomcat</kbd>和<kbd>Spring MVC</kbd>，所以<kbd>auto-configuration</kbd>将假定你正在开发一个<kbd>web</kbd>应用，并对<kbd>Spring</kbd>进行相应地设置。<br/>
