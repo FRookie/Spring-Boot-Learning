@@ -19,4 +19,15 @@ springboot学习资料分析(中/英PDF)
       </dependencies>
     
 Spring-Boot项目构建是pom文件中会继承父节点spring-boot-starter-parent(这是项目自动构建时所继承的，当然根据公司需要可自定义父节点文件)，
-此父节点文件中继承了spring-boot-dependencies节点（其中根据spring-boot构建版本的不同指定了相关jar依赖，plugin依赖以及其对应的兼容版本）。spring-boot-starter-parent节点中定义了
+此父节点文件中继承了"spring-boot-dependencies"节点（其中根据spring-boot构建版本的不同指定了相关jar依赖，plugin依赖以及其对应的兼容版本）。
+spring-boot-starter-parent节点中定义了maven默认的配置:
+### 文件解析格式以及路径：
+          <resource>
+            <filtering>true</filtering>
+            <directory>${basedir}/src/main/resources</directory>
+            <includes>
+              <include>**/application*.yml</include>
+              <include>**/application*.yaml</include>
+              <include>**/application*.properties</include>
+            </includes>
+          </resource>
