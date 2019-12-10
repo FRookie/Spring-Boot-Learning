@@ -70,7 +70,7 @@ ___@Basic___:应用于属性，表示该属性映射到数据库表，<kbd>@Enti
 
 >> 2. <kbd>optional:</kbd>表示该属性是否允许为<kbd>NULL</kbd>,默认为<kbd>TRUE</kbd>。
 
->> @Basic(fetch = FetchType.LAZY)标注某属性时，表示只有调用Hibernate对象的该属性的get方法时，才会从数据库表中查找对应该属性的字段值。
+>> <kbd>@Basic(fetch = FetchType.LAZY)</kbd>标注某属性时，表示只有调用Hibernate对象的该属性的get方法时，才会从数据库表中查找对应该属性的字段值。
 
 ___@Column___:应用于实体类的属性，可以指定该数据库表字段的名字和其他属性。其属性包括：
 
