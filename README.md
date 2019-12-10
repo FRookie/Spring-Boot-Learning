@@ -68,8 +68,34 @@ ___@Basic___:应用于属性，表示该属性映射到数据库表，<kbd>@Enti
 
 >> 1. <kbd>fetch:</kbd>属性的读取策略，有<kbd>EAGER</kbd>和<kbd>LAZY</kbd>两种取值。分别表示主动抓取策略和延迟加载策略，默认为<kbd>EAGER</kbd>。
 
->> <kbd>optional:</kbd>表示该属性是否允许为<kbd>NULL</kbd>,默认为<kbd>TRUE</kbd>。
+>> 2. <kbd>optional:</kbd>表示该属性是否允许为<kbd>NULL</kbd>,默认为<kbd>TRUE</kbd>。
 
 >> @Basic(fetch = FetchType.LAZY)标注某属性时，表示只有调用Hibernate对象的该属性的get方法时，才会从数据库表中查找对应该属性的字段值。
 
-___@Column___:
+___@Column___:应用于实体类的属性，可以指定该数据库表字段的名字和其他属性。其属性包括：
+
+> + <kbd>name</kbd>: 表示数据库表中该字段的名称，默认情形属性名称一致。
+
+> + <kbd>nullable</kbd>: 表示该字段是否允许为<kbd>null</kbd>,默认为<kbd>true</kbd> .
+
+> + <kbd>unique</kbd>: 表示该字段是否为唯一标识，默认为<kbd>false</kbd>。
+
+> + <kbd>insertable</kbd>： 表示在<kbd>ORM</kbd>框架执行插入操作时，该字段是否应出现<kbd>INSERT</kbd>语句中，默认为<kbd>true</kbd>。
+
+> + <kbd>length</kbd>：表示该字段的大小，仅对<kbd>String</kbd>类型的字段有效。
+
+> + <kbd>updateable</kbd>：表示在<kbd>ORM</kbd>框架执行更新操作时，该字段是否应该出现在<kbd>UPDATE</kbd>语句中，默认为<kbd>true</kbd>。对于已经创建就不能更改的字段，该属性非常有用，比如<kbd>email</kbd>属性。
+
+> + <kbd>columnDefinition</kbd>：表示该字段在数据库表中的实际类型。通常<kbd>ORM</kbd>框架可以根据属性类型自动判断数据库中字段的类型，但是有例外：
+
+    1. Date 类型无法确定数据库中字段类型究竟是DATE、TIME还是TIMESTAMP。
+    2. String 的默认映射类型是VARCHAR，如果希望将String类型映射到特定数据库的BLOB或TEXT字段类型，则需要进行设置。
+
+___@Transient___: 应用在实体类属性上，表示该属性不映射到数据库表，<kbd>JPA</kbd>会自动忽略该属性。
+
+___@Temporal___: 应用到实体类属性上，表示该属性映射到数据库是一个时间类型，具体定义为：
+
+> + <kbd>@Temporal(TemporalType.DATE)</kbd>映射为日期date（只有日期）
+> + <kbd>@Temporal(TemporalType.TIME)</kbd>映射为日期time（只有时间）
+> + <kbd>@Temporal(TemporalType.TIMESTAMP)</kbd>映射为日期datetime（日期+时间）
+ 
