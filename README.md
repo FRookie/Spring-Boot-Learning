@@ -88,8 +88,9 @@ ___@Column___:应用于实体类的属性，可以指定该数据库表字段的
 
 > + <kbd>columnDefinition</kbd>：表示该字段在数据库表中的实际类型。通常<kbd>ORM</kbd>框架可以根据属性类型自动判断数据库中字段的类型，但是有例外：
 
-    1. Date 类型无法确定数据库中字段类型究竟是DATE、TIME还是TIMESTAMP。
-    2. String 的默认映射类型是VARCHAR，如果希望将String类型映射到特定数据库的BLOB或TEXT字段类型，则需要进行设置。
+>> +    1. Date 类型无法确定数据库中字段类型究竟是DATE、TIME还是TIMESTAMP。
+
+>> +    2. String 的默认映射类型是VARCHAR，如果希望将String类型映射到特定数据库的BLOB或TEXT字段类型，则需要进行设置。
 
 ___@Transient___: 应用在实体类属性上，表示该属性不映射到数据库表，<kbd>JPA</kbd>会自动忽略该属性。
 
