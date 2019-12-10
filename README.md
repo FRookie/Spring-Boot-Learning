@@ -45,5 +45,21 @@ ___Spring-Boot___ 项目构建是 <kbd>pom</kbd>文件中会继承父节点<kbd>
 # 注解解析
 ___@RestController___:这是SpringMVC中的注解，是<kbd>@Responsebody</kbd>和<kbd>@Controller</kbd>的结合。注明这是一个<kbd>Controller</kbd>类
 用于<kbd>URL</kbd>请求所访问和映射的类，是一个支持<kbd>REST</kbd>的注解，且指明返回体为字符串类型。<br/>
+
 ___@ResquestMapping___:此注解指明路由信息，任何请求都会根据路由地址映射到对应的方法上。<br/>
+
 ___@EnableAutoConfiguration___:这个注解告诉<kbd>Spring Boot</kbd>根据添加的<kbd>jar</kbd>依赖猜测你想如何配置<kbd>Spring</kbd>。由于 <kbd>spring-boot-starter-web</kbd> 添加了<kbd>Tomcat</kbd>和<kbd>Spring MVC</kbd>，所以<kbd>auto-configuration</kbd>将假定你正在开发一个<kbd>web</kbd>应用，并对<kbd>Spring</kbd>进行相应地设置。<br/>
+
+___@Entity___:用于标注在数据库表映射的实体类上,表明该实体类被<kbd>JPA</kbd>所管理.
+
+___@Table___:应用于实体类，通过<kbd>name</kbd>属性指定对应该实体类映射表的名称.
+
+___@Id___:应用于实体类的属性或者属性所对应的<kbd>getter</kbd>方法上，表明该属性映射为数据表的主键。
+
+___@GeneratedValue___:与<kbd>@Id</kbd>一起使用，表明主键的生成策略，可以通过<kbd>strategy</kbd>属性指定。
+
+    ### 生成策略：
+        + AUTO : JPA自动选择的策略，是默认选项。
+        + IDENTITY : 采用数据库<kbd>ID</kbd>自增长的方式生成主键值，Oracle不支持此策略。
+        + SEQUENCE : 通过序列产生主键，通过<kbd>@SequenceGenerator</kbd>注解指定序列名，Mysql不支持此策略。
+        + TABLE : 采用表生成方式来生成主键值，这种方式比较通用，但是效率较低。
