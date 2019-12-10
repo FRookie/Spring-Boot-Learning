@@ -63,3 +63,13 @@ ___@GeneratedValue___:与<kbd>@Id</kbd>一起使用，表明主键的生成策�
         + IDENTITY : 采用数据库<kbd>ID</kbd>自增长的方式生成主键值，Oracle不支持此策略。
         + SEQUENCE : 通过序列产生主键，通过<kbd>@SequenceGenerator</kbd>注解指定序列名，Mysql不支持此策略。
         + TABLE : 采用表生成方式来生成主键值，这种方式比较通用，但是效率较低。
+
+___@Basic___:应用于属性，表示该属性映射到数据库表，<kbd>@Entity</kbd>标注的实体类的所有属性，默认即为<kbd>@Basic</kbd>.其有两个属性：
+
+>> 1. <kbd>fetch:</kbd>属性的读取策略，有<kbd>EAGER</kbd>和<kbd>LAZY</kbd>两种取值。分别表示主动抓取策略和延迟加载策略，默认为<kbd>EAGER</kbd>。
+
+>> <kbd>optional:</kbd>表示该属性是否允许为<kbd>NULL</kbd>,默认为<kbd>TRUE</kbd>。
+
+>> @Basic(fetch = FetchType.LAZY)标注某属性时，表示只有调用Hibernate对象的该属性的get方法时，才会从数据库表中查找对应该属性的字段值。
+
+___@Column___:
