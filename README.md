@@ -117,4 +117,13 @@ ___@Temporal___: 应用到实体类属性上，表示该属性映射到数据库
 > + <kbd>@Temporal(TemporalType.DATE)</kbd>映射为日期date（只有日期）
 > + <kbd>@Temporal(TemporalType.TIME)</kbd>映射为日期time（只有时间）
 > + <kbd>@Temporal(TemporalType.TIMESTAMP)</kbd>映射为日期datetime（日期+时间）
- 
+
+# Logging
+
+日志级别优先级由低到高分为：<br/>
+
+>> <kbd>TRACE</kbd>、<kbd>DEBUG</kbd>、<kbd>INFO</kbd>、<kbd>WARN</kbd>、<kbd>ERROR</kbd>、<kbd>FETAL</kbd>、<kbd>OFF</kbd>
+
+&nbsp;&nbsp;&nbsp;Spring Boot的默认日志配置会在写日志消息时回显到控制台，级别为<kbd>INFO</kbd>、<kbd>WARN</kbd>、<kbd>ERROR</kbd>的消息会被记录。启动应用时，通过 '--debug' 标识开启控制台的<kbd>DEBUG</kbd>级别日志记录，也可以在 'application.properties' 中配置指定。当<kbd>DEBUG</kbd>模式启用时，一系列核心<kbd>loggers</kbd>(内嵌容器、Hibernate、Spring Boot等)记录的日志会变多，但不会输出所有的信息。<br/>
+相应的，可以通过指定 '--trace' 启动<kbd>trace</kbd>模式来追踪核心<kbd>loggers</kbd>(内嵌容器、Hibernate生成的Schema、Spring全部的portfolio )的所有日志信息。
+
