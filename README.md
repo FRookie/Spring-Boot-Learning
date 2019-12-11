@@ -43,9 +43,11 @@ ___Spring-Boot___ 项目构建是 <kbd>pom</kbd>文件中会继承父节点<kbd>
 ...<br/> 
 
 ### Application事件和监听器
+___(注：通常不需要使用<kbd>application</kbd>事件,但在某些场合除外，如在<kbd>Spring Boot</kbd>内部处理各种任务。Skr~Skr~Skr...)___
 
     除了常见的Spring事件(ContextRefreshedEvent)，SpringApplication也会发送其它的Application事件。
-    这些事件有些是在ApplicationContext创建之前触发的，因此这些事件不能通过@Bean来注册监听器，只能通过SpringApplication.assListeners(...)或SpringApplicationBuilder.listeners(...)方法去注册。如果想让监听器去自动注册而不去关心应用的创建方式，可以在工程中添加META-INFO/spring.factories文件，并使用org.springframework.context.ApplicationListener作为Key指向监听器，如：
+    这些事件有些是在ApplicationContext创建之前触发的，因此这些事件不能通过@Bean来注册监听器，只能通过SpringApplication.assListeners(...)或SpringApplicationBuilder.listeners(...)方法去注册。
+    如果想让监听器去自动注册而不去关心应用的创建方式，可以在工程中添加META-INFO/spring.factories文件，并使用org.springframework.context.ApplicationListener作为Key指向监听器，如：
 
        org.springframework.context.ApplicationListener=com.example.project.MyListener
    
