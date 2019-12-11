@@ -42,6 +42,22 @@ ___Spring-Boot___ 项目构建是 <kbd>pom</kbd>文件中会继承父节点<kbd>
         UTF-8
 ...<br/> 
 
+### Application事件和监听器
+
+    除了常见的Spring事件(ContextRefreshedEvent)，SpringApplication也会发送其它的Application事件。
+    这些事件有些是在ApplicationContext创建之前触发的，因此这些事件不能通过@Bean来注册监听器，只能通过SpringApplication.assListeners(...)或SpringApplicationBuilder.listeners(...)方法去注册。如果想让监听器去自动注册而不去关心应用的创建方式，可以在工程中添加META-INFO/spring.factories文件，并使用org.springframework.context.ApplicationListener作为Key指向监听器，如：
+
+       org.springframework.context.ApplicationListener=com.example.project.MyListener
+   
+ 应用运行时，事件会按照以下次序来执行：
+ 
+ > + 在运行开始，但除了监听器注册和初始化之外的任何处理之前，会发送一个ApplicationStartedEvent。
+ > + 在Environment将被用于已知的上下文，但在上下文被创建之前，会发送一个ApplicationEnvironmentPreparedEvent。
+ > + 在refresh开始之前，但在Bean加载后会发送一个ApplicationPreparedEvent。
+ > + 在refresh开始之后，相关的回调处理完，会发送一个ApplicationReadyEvent，表示应用准备好接受请求。
+ > + 如果启动过程中出现异常，则会发送一个ApplicationFailedEvent。
+
+
 # 注解解析
 ___@RestController___:这是SpringMVC中的注解，是<kbd>@Responsebody</kbd>和<kbd>@Controller</kbd>的结合。注明这是一个<kbd>Controller</kbd>类
 用于<kbd>URL</kbd>请求所访问和映射的类，是一个支持<kbd>REST</kbd>的注解，且指明返回体为字符串类型。<br/>
