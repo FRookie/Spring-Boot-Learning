@@ -133,5 +133,19 @@ ___@Temporal___: 应用到实体类属性上，表示该属性映射到数据库
 
 # HttpMessageConverters
    
- > *<kbd>Spring MVC</kbd>使用<kbd>HttpMessageConverter</kbd>接口转换 HTTP 请求和响应，其默认配置可以将对象转换为<kbd>JSON</kbd>(使用<kbd>Jackson</kbd>库)或<kbd>XML</kbd>文件，字符串默认使用<kbd>UTF-8</kbd>编码。
- > *可以使用<kbd>Spring Boot</kbd>的<kbd>HttpMessageConverters</kbd>类添加或自定义转换类。
+ > + <kbd>Spring MVC</kbd>使用<kbd>HttpMessageConverter</kbd>接口转换 HTTP 请求和响应，其默认配置可以将对象转换为<kbd>JSON</kbd>(使用<kbd>Jackson</kbd>库)或<kbd>XML</kbd>文件，字符串默认使用<kbd>UTF-8</kbd>编码。
+ > + 可以使用<kbd>Spring Boot</kbd>的<kbd>HttpMessageConverters</kbd>类添加或自定义转换类。
+
+    @Configuration
+    public class MyConfiguration {
+        @Bean
+        public HttpMessageConverters customConverters() {
+            HttpMessageConverter<?> additional = ...
+            HttpMessageConverter<?> another = ...
+        return new HttpMessageConverters(additional, another);
+        }
+    }
+ 
+ &nbsp;&nbsp;&nbsp;&nbsp;如上程序中，上下文出现的所有HttpMessageConverter bean都会被添加到converters列表中，因此可以使用这种方式来覆盖默认的转换器。
+ 
+ 
