@@ -130,3 +130,8 @@ ___@Temporal___: 应用到实体类属性上，表示该属性映射到数据库
 ## 文件输出
    
    > 默认情况，Spring Boot只会讲日志信息打印到控制台而不会输出到日志文件中。但是可以通过<kbd>logging.file</kbd>或<kbd>logging.path</kbd>属性来设置。日志文件每达到10M就会被分割。
+
+# HttpMessageConverters
+   
+ > *<kbd>Spring MVC</kbd>使用<kbd>HttpMessageConverter</kbd>接口转换 HTTP 请求和响应，其默认配置可以将对象转换为<kbd>JSON</kbd>(使用<kbd>Jackson</kbd>库)或<kbd>XML</kbd>文件，字符串默认使用<kbd>UTF-8</kbd>编码。
+ > *可以使用<kbd>Spring Boot</kbd>的<kbd>HttpMessageConverters</kbd>类添加或自定义转换类。
