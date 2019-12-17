@@ -150,8 +150,8 @@ ___@Temporal___: 应用到实体类属性上，表示该属性映射到数据库
  
 # 自定义JSON序列化和反序列化
 
-     如果使用<kbd>Jackson</kbd>序列化，反序列化Json数据，可以自定义JsonSerializer和JsonDeserializer类。<br/>
-     自定义序列化器（serializers）通常使用Module注册到Jackson，但是Spring Boot提供了@JsonComponent注解这个替代方式，将序列化器Spring Beans。
+ > + 如果使用<kbd>Jackson</kbd>序列化，反序列化Json数据，可以自定义JsonSerializer和JsonDeserializer类。<br/>
+ > + 自定义序列化器（serializers）通常使用Module注册到Jackson，但是Spring Boot提供了@JsonComponent注解这个替代方式，将序列化器Spring Beans。
  
 
 
