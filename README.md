@@ -161,7 +161,7 @@ ___@Temporal___: 应用到实体类属性上，表示该属性映射到数据库
     只需继承 BasicErrorController，添加一个public方法，并注解带有produces属性的@RequestMapping，然后创建该新类型的bean。
 
     @ControllerAdvice(basePackageClasses = FooController.class)
-    public class FooControllerAdvice extends ResponseEntityException Handler {
+    public class FooControllerAdvice extends ResponseEntityExceptionHandler {
         @ExceptionHandler(YourException.class)
         @ResponseBody
         ResponseEntity<?> handleControllerException(HttpServletRequest request, Throwable ex) {
