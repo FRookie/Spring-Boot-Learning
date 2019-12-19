@@ -153,5 +153,27 @@ ___@Temporal___: 应用到实体类属性上，表示该属性映射到数据库
  > + 如果使用<kbd>Jackson</kbd>序列化，反序列化Json数据，可以自定义JsonSerializer和JsonDeserializer类。<br/>
  > + 自定义序列化器（serializers）通常使用Module注册到Jackson，但是Spring Boot提供了@JsonComponent注解这个替代方式，将序列化器Spring Beans。
  
+# 错误处理
 
+> Spring Boot 默认提供一个<kbd>/error</kbd>映射用来已合适的方式处理所有的错误，并将它注册为servlet容器中全局的错误页面。为了完全替代默认的行为，可以实现ErrorController，并注册一个该类型的bean定义，或简单添加一个ErrotAttributes类型的bean以使用现存的机制，只是替代了显示的内容。
 
+      注：BasicErrorController可以作为自定义ErrorController的基类，如果想添加对新的context type的处理（默认处理text/html），这个方式会很有帮助。
+    只需继承 BasicErrorController，添加一个public方法，并注解带有produces属性的@RequestMapping，然后创建该新类型的bean。
+
+    @ControllerAdvice(basePackageClasses = FooController.class)
+    public class FooControllerAdvice extends ResponseEntityException Handler {
+        @ExceptionHandler(YourException.class)
+        @ResponseBody
+        ResponseEntity<?> handleControllerException(HttpServletRequest request, Throwable ex) {
+            HttpStatus status = getStatus(request);
+            return new ResponseEntity<>(new CustomErrorType(status.v
+            alue(), ex.getMessage()), status);
+        }
+        private HttpStatus getStatus(HttpServletRequest request) {
+        Integer statusCode = (Integer) request.getAttribute("javax.servlet.error.status_code");
+        if (statusCode == null) {
+            return HttpStatus.INTERNAL_SERVER_ERROR;
+        }
+        return HttpStatus.valueOf(statusCode);
+    }
+}
