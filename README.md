@@ -72,6 +72,7 @@ ___(注：通常不需要使用<kbd>application</kbd>事件,但在某些场合�
 在Spring Boot中JPA从技术层面上来讲，其实是一个spring-boot-starter-data-jpa模块，包括：
 
 > Hibernate
+
 > Spring Data JPA基于JPA进一步简化了数据访问层的实现，提供了类似一种声明式编程方式，开发者访问数据层不需要重复的模板代码，只需要编写Repository接口，他就根据方法名自动生成实现
 
 > Spring ORMs是Spring Framework对ORM的核心支撑。
