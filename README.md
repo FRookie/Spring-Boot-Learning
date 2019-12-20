@@ -220,6 +220,31 @@ ___@Temporal___: 应用到实体类属性上，表示该属性映射到数据库
         }
       }
 
+# JSP的限制
+
+&nbsp;&nbsp;&nbsp;&nbsp;当使用内嵌Servlet容器启动Spring Boot应用时，容器对JSP的支持有一些限制：
+
+> 1.Tomcat只支持war的打包形式，不支持可执行jar
+> 2.Jetty只支持war的打包形式
+> 3.Undertow不支持JSP
+> 4.创建自定义的err.jsp页面不会覆盖默认的error handing视图。
 
 
+# Spring Boot --- Redis
 
+&nbsp;&nbsp;&nbsp;&nbsp;Redis是一个缓冲，消息中间件以及具有丰富特性的键值存储系统。Spring Boot为Jedis客户端library提供基本的自动配置，Spring Data Redis提供了在他之上的抽象，spring-boot-starter-redis 收集了需要的相关依赖。
+
+## 连接Redis
+
+&nbsp;&nbsp;&nbsp;&nbsp;你可以注入一个自动配置的<kbd>RedisConnectionFactory</kbd>,<kbd>StringRedisTemplate</kbd>或普通的<kbd>RedisTemplate</kbd>实例，或任何其他Spring Bean。默认情况下，这个实例将尝试使用<kbd>localhost:6379</kbd>连接Redis服务器：
+
+    @Component
+    public class MyBean {
+        private StringRedisTemplate template;
+        @Autowired
+        public MyBean(StringRedisTemplate template) {
+             this.template = template;
+        }
+        // ...
+    }
+&nbsp;&nbsp;&nbsp;&nbsp;如果添加一个自定义或其他自动配置类型的@Bean，他将替代默认实例(除了RedisTemplate的情况，它是根据bean的名字‘redisTemplate’，而不是类型进行排除的。)如果在classpath路径下存在commons-pool2，默认你会获得一个连接池工厂。
