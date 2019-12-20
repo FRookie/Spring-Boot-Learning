@@ -59,6 +59,29 @@ ___(注：通常不需要使用<kbd>application</kbd>事件,但在某些场合�
  > + 在refresh开始之后，相关的回调处理完，会发送一个ApplicationReadyEvent，表示应用准备好接受请求。
  > + 如果启动过程中出现异常，则会发送一个ApplicationFailedEvent。
 
+# JPA
+
+> JPA(Java Persistent API):Java持久化API，它是一种Java持久化的规范
+> JPA统一已有的ORM框架，给开发者提供了统一、相对简单的持久化工具，降低了程序与ORM产品之间的耦合度，提供程序的可移植性。
+> JPA本身不可以直接在程序中使用，需要依赖实现了JPA规范的产品，如Hibernate。
+> JPA产品，包括：
+>> + ORM映射元数据
+>> + Java持久化API（CRUD）
+>> + 查询语言JPQL
+
+在Spring Boot中JPA从技术层面上来讲，其实是一个spring-boot-starter-data-jpa模块，包括：
+
+> Hibernate
+> Spring Data JPA基于JPA进一步简化了数据访问层的实现，提供了类似一种声明式编程方式，开发者访问数据层不需要重复的模板代码，只需要编写Repository接口，他就根据方法名自动生成实现
+
+> Spring ORMs是Spring Framework对ORM的核心支撑。
+
+使用时，只需在pom.xml文件中引入spring-boot-starter-data-jpa依赖即可：
+
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-data-jpa</artifactId>
+    </dependency>
 
 # 注解解析
 ___@RestController___:这是SpringMVC中的注解，是<kbd>@Responsebody</kbd>和<kbd>@Controller</kbd>的结合。注明这是一个<kbd>Controller</kbd>类
