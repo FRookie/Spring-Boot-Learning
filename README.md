@@ -199,5 +199,27 @@ ___@Temporal___: 应用到实体类属性上，表示该属性映射到数据库
             return HttpStatus.INTERNAL_SERVER_ERROR;
         }
         return HttpStatus.valueOf(statusCode);
-    }
-}
+      }
+    }    
+
+# CORS支持
+
+&nbsp;&nbsp;&nbsp;&nbsp;跨域资源共享(CORS)是一个大多数浏览器都实现了的W3C标准，它允许以任何灵活的方式指定跨域请求如何被授权，而不是采用不安全、性能低的方式，如IFRAME和JSONP。<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;从4.2版本后，Spring MVC对CORS提供了开箱即用的支持。无需添加任何特殊配置，只需在Spring Boot应用的Controller方法上注解@CrossOrigin，并添加CORS配置。通过注册一个自定义的<kbd>addCorsMappings(CorsRegistry)</kbd>方法的<kbd>WebMvcConfigurer bean</kbd>可以指定<kbd>全局CORS配置</kbd>:
+
+    @Configuration
+    public class MyConfiguration {
+        @Bean
+        public WebMvcConfigurer corsConfigurer() {
+             return new WebMvcConfigurerAdapter() {
+                @Override
+                public void addCorsMappings(CorsRegistry registry) {
+                    registry.addMapping("/api/**");
+                }
+            };
+        }
+      }
+
+
+
+
