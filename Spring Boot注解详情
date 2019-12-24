@@ -252,3 +252,6 @@ EntityManager.refresh()方法被调用后。
 @PreRemove事件在实体从数据库删除之前触发，即在调用remove()方法删除时发生，此时的数据还没有真正从数据库中删除。
 
 @PostRemove事件在实体从数据库中删除后触发。
+
+    转至https://blog.csdn.net/weixin_40753536/article/details/81285046
+  
