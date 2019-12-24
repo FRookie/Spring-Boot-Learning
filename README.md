@@ -84,7 +84,7 @@ ___(注：通常不需要使用<kbd>application</kbd>事件,但在某些场合�
         <artifactId>spring-boot-starter-data-jpa</artifactId>
     </dependency>
 
-# 注解解析
+# 部分注解解析 -----> [详细点此处]()
 ___@RestController___:这是SpringMVC中的注解，是<kbd>@Responsebody</kbd>和<kbd>@Controller</kbd>的结合。注明这是一个<kbd>Controller</kbd>类
 用于<kbd>URL</kbd>请求所访问和映射的类，是一个支持<kbd>REST</kbd>的注解，且指明返回体为字符串类型。<br/>
 
